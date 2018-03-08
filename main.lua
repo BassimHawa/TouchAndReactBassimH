@@ -10,3 +10,9 @@ display.setDefault ("background", 153/255, 204/255, 255/255)
 
 --hide status bar
 display.setStatusBar(display.HiddenStatusBar)
+
+--create blue button, set its position and make it visible
+local blueButton = display.newImageRect("Images/blueButton.png", 198, 96)
+blueButton.x = display.contentWidth/2
+blueButton.y = display.contentHeight/2
+bluebutton
