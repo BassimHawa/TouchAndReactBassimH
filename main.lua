@@ -38,7 +38,10 @@ local function BlueButtonListener(touch)
 	if (touch.phase == "began") then
 		blueButton.isVisible = false
 		redButton.isVisible = true
-		textObject.isVisible = true
+		textObject.isVisible = true--sound
+		local correctSound = audio.loadSound("Sounds/Correct Answer Sound Effect.mp3")
+		local correctSoundChannel
+		correctSoundChannel = audio.play(correctSound)
 	end 
 
 	if (touch.phase == "ended") then
