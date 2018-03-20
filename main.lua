@@ -30,10 +30,17 @@ textObject.y = display.contentHeight/3
 textObject:setTextColor (1, 1, 1)
 textObject.isVisible = false
 
+--Create Obama, set his position, and make him invisible
+local Obama = display.newImageRect("Images/Obama-head.png",250, 200)
+Obama.x = display.contentWidth/3
+Obama.y = display.contentHeight/1.5
+Obama.isVisible = false
+
 --Function: BlueButtonListener
 --Input: touch listener
 --Output: none
---Description: when blue button is clicked, it will make the text aooear with red button and make the blue button disappear
+--Description: when blue button is clicked, it will make the text appear with red button, as well as obama 
+--and make the blue button disappear
 local function BlueButtonListener(touch)
 	if (touch.phase == "began") then
 		blueButton.isVisible = false
@@ -42,19 +49,21 @@ local function BlueButtonListener(touch)
 		local correctSound = audio.loadSound("Sounds/Correct Answer Sound Effect.mp3")
 		local correctSoundChannel
 		correctSoundChannel = audio.play(correctSound)
+		Obama.isVisible = true
 	end 
 
 	if (touch.phase == "ended") then
 		blueButton.isVisible = true
 		redButton.isVisible = false
 		textObject.isVisible = false
+		Obama.isVisible = false
 	end
 end
 
 --Function: RedButtonListener
 --Input: touch listener
 --Output: none
---Description: when red button is released, it will make the text disappear and red button
+--Description: when red button is released, it will make the text disappear, as well as obama and red button
 --disappear, and then blue button reappear
 local function RedButtonListener(touch)
 
@@ -62,6 +71,7 @@ local function RedButtonListener(touch)
 		blueButton.isVisible = true
 		redButton.isVisible = false
 		textObject.isVisible = false
+		Obama.isVisible = false
 	end
 end
 
